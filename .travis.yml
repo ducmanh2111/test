@@ -5,3 +5,12 @@ services:
 script:
   - docker build -t ducmanh2111/node .
   - docker images ducmanh2111/node
+
+before_deploy:
+  - docker login -u ducmanh2111 -p ducmanh2193
+
+deploy:
+  provider: script
+  script: docker push ducmanh2111/node
+  on:
+    branch: master
